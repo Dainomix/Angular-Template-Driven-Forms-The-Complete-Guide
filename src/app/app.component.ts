@@ -68,6 +68,10 @@ export class AppComponent {
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
+
+    // If we want, we can pass the same object as in setValue() to reset()
+    // which will then reset the form to specific values!
+    this.signupForm.reset();
   }
 
 
