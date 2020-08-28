@@ -15,6 +15,38 @@ export class AppComponent {
   
   suggestUserName() {
     const suggestedName = 'Superuser';
+
+    /* 1st Approach 
+     * However this approach does have one downside
+     * -> If we already had some value we enter there and then want to click suggest username,
+     * it overwrites all our content.
+     * -> This is not necessarily the best approach
+     */
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+
+    /* 2nd Approach
+     * -> signupForm, this overall ngForm object is kind of the container of our form we could say
+     * and there we also have patch value method
+     * 
+     * -> patch value only available on the form wrapped by ngForm itself.
+     * As a side note, setValue would be available here too.
+     * 
+     * setValue: to set our whole form
+     * patchValue: to overwite parts of the form
+     */
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   // onSubmit(form: NgForm) {
